@@ -1,0 +1,222 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>What Should we Do Today?</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <link href="assets/css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="assets/css/jquery-ui-1.10.2.custom.min.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="assets/css/stream.css" media="screen" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'>
+    <script src="assets/js/jquery-1.11.1.min.js" type="text/javascript"></script>
+    <script src="assets/js/jquery-ui-1.10.2.custom.min.js" type="text/javascript"></script>
+    <script src="dist/filter.js" type="text/javascript"></script>
+    <script src="data/activities.js" type="text/javascript"></script>
+    <script src="index.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <div class="containerx">
+<button class="cmn-toggle-switch cmn-toggle-switch__htla">
+  <span>toggle menu</span>
+</button>
+      <h1 class="title">What Should We Do Today? <span class="subtitle"> (Total Activities - <span id="total_movies">250</span>)</span></h1>
+      <div class="sidebar">
+        <div>
+          <input type="text" id="searchbox" placeholder="Search...">
+          <span class="glyphicon glyphicon-search search-icon"></span>
+        </div>
+        <div class="criteria criteria_mini">
+          <a href="#" id="random">Gimme Three</a>
+        </div>
+        <div class="criteria" id="cost_criteria">
+          <h4>Cost (approximate per adult)</h4>
+          <span id="cost_range_label" class="slider-label">$0 - $100</span>
+          <div id="cost_slider" class="slider"></div>
+          <input type="hidden" id="cost_filter" value="0-100"/>
+        </div>
+        <div class="criteria" id="distance_criteria">
+          <h4>Distance</h4>
+          <span id="distance_range_label" class="slider-label">10 mins - 360 mins</span>
+          <div id="distance_slider" class="slider"></div>
+          <input type="hidden" id="distance_filter" value="0-250">
+        </div>
+        <div class="criteria" id="region_criteria">
+          <h4>Region</h4>
+          <select id="region_filter" class="col-span-8">
+            <option value="all">All</option>
+            <option value="metrowest">Metrowest</option>
+            <option value="northshore">North Shore</option>
+            <option value="southshore">South Shore</option>
+            <option value="western">Western Mass</option>
+            <option value="nh">New Hampshire</option>
+            <option value="boston">Boston</option>
+            <option value="cape">Cape Cod</option>
+            <option value="ri">Rhode Island</option>
+            <option value="ct">Connecticut</option>
+          </select>
+        </div>
+        <div class="criteria" id="tags_criteria">
+          <h4>Tags</h4>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" value="All" id="all_tags"> All
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" value="Pick"> Scott's Picks
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" value="Amusement"> Amusement
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" value="Animals"> Animals
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" value="Art"> Art
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" value="Autumn"> Autumn
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" value="Beach"> Beach
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" value="Extreme"> Extreme
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" value="Farm"> Farm
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" value="Garden"> Garden
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" value="Hiking"> Hiking
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" value="History"> History
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" value="IceCream"> Ice Cream
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" value="Museum"> Museum
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" value="Odd"> Odd
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" value="Play"> Play
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" value="Playground"> Playground
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" value="Shopping"> Shopping
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" value="Shows"> Shows
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" value="Sports"> Sports
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" value="Summer"> Summer
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" value="Tour"> Tour
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" value="Water"> Water
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" value="Winter"> Winter
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="sorting content">
+      </div>
+      <div class="movies content" id="movies">
+      </div>
+      <script id="movie-template" type="text/html">
+        <div class="movie">
+          <div class="thumbnail" style="background-image:url(<%= background %>)">
+          <div class="caption">
+            <h4><%= name %></h4>
+            <div class="outline">
+              <ul>
+                <li><strong>Location:</strong> <%= location %></li>
+                <li><strong>Hours:</strong> <%= hours %></li>
+                <li><strong>Cost:</strong> <%= cost %></li>
+                <li><a href="<%= link %>" target="_new">Website</a> | <a href="<%= maplink %>" target="_new">Map</a></li>
+              </ul>
+            </div>
+            <div class="detail">
+              <%= description %>
+            </div>
+              <span class="distance">
+                <i class="glyphicon glyphicon-time"></i>
+                <% if((Math.floor(distance / 60))>0) {%>
+                <%=Math.floor(distance / 60) + " hr" %> 
+                <%}%>
+                <% if(distance % 60>0) {%>
+                <%= distance % 60%> min
+                <%}%>
+              </span>
+          </div>
+        </div>
+      </div>
+      </script>
+      <script id="tags_template" type="text/html">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="<%= tags %>"> <%= tags %>
+          </label>
+        </div>
+      </script>
+    </body>
+  </html>
